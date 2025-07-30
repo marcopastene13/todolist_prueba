@@ -1,60 +1,59 @@
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
- function Login() {
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  const [error, setError] = useState('')
+
+function Login() {
+  const [formData, setFormData] = useState({ email: '', password: '' })
+  const navigate = useNavigate()
+
+  const handleChange = e => {
+    setFormData({ ...formData, [e.target.name]: e.target.value })
+  }
 
   const handleSubmit = async e => {
     e.preventDefault()
-    setError('')
+    const res = await fetch('http://127.0.0.1:5000/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(formData),
+    })
 
-    try {
-      const res = await fetch('http://127.0.0.1:5000/auth/login', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, password }),
-      })
-
-      if (!res.ok) {
-        const data = await res.json()
-        setError(data.message || 'Error en login')
-        return
-      }
-
-      const data = await res.json()
-      localStorage.setItem('token', data.access_token)
-      window.location.href = '/tasks' // redirigir a tareas
-    } catch (err) {
-      setError('Error de conexión')
+    const data = await res.json()
+    if (res.ok) {
+      localStorage.setItem('token', data.token)
+      navigate('/tasks')
+    } else {
+      alert(data.message || 'Error al iniciar sesión')
     }
   }
 
   return (
-    <div className="container mt-5" style={{ maxWidth: 400 }}>
-      <h2>Iniciar sesión</h2>
-      {error && <div className="alert alert-danger">{error}</div>}
+    <div className="container mt-5">
+      <h2>Iniciar Sesión</h2>
       <form onSubmit={handleSubmit}>
         <input
-          type="email"
-          placeholder="Correo"
-          className="form-control my-2"
-          value={email}
-          onChange={e => setEmail(e.target.value)}
-          required
+          className="form-control mb-2"
+          name="email"
+          placeholder="Correo electrónico"
+          onChange={handleChange}
         />
         <input
+          className="form-control mb-2"
+          name="password"
           type="password"
           placeholder="Contraseña"
-          className="form-control my-2"
-          value={password}
-          onChange={e => setPassword(e.target.value)}
-          required
+          onChange={handleChange}
         />
-        <button className="btn btn-primary w-100" type="submit">
-          Entrar
-        </button>
+        <button className="btn btn-primary" type="submit">Ingresar</button>
       </form>
+      
+      <div className="mt-3 text-center">
+        ¿No tienes cuenta?{' '}
+        <Link to="/register" className="btn btn-link p-0">
+          Crear nuevo usuario
+        </Link>
+      </div>
     </div>
   )
 }
