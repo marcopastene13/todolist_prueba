@@ -135,3 +135,124 @@ input::placeholder {
     margin-top: 1rem;
   }
 }
+
+/* TaskList.css */
+
+.tasklist-container {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 1rem;
+  background: #f8f9fa;
+  border-radius: 8px;
+;
+
+}
+
+.tasklist-container h2 {
+  margin-bottom: 1.5rem;
+  color: #333;
+  font-weight: 700;
+  text-align: center;
+}
+
+.tasklist-form {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.tasklist-form input {
+  flex-grow: 1;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  border-radius: 25px;
+  border: 1px solid #ced4da;
+}
+
+.tasklist-form input:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 5px #007bff;
+}
+
+.tasklist-form button {
+  background-color: #007bff;
+  border: none;
+  padding: 0 1.5rem;
+  border-radius: 25px;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.tasklist-form button:hover {
+  background-color: #0056b3;
+}
+
+.tasklist-items {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.tasklist-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: white;
+  margin-bottom: 0.75rem;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  cursor: default;
+}
+
+.tasklist-item.completed span {
+  text-decoration: line-through;
+  color: #6c757d;
+}
+
+.tasklist-item:hover {
+  background-color: #e9ecef;
+}
+
+.tasklist-item span {
+  flex-grow: 1;
+  cursor: pointer;
+  user-select: none;
+}
+
+.tasklist-delete-btn {
+  background-color: #dc3545;
+  border: none;
+  color: white;
+  padding: 0.4rem 0.8rem;
+  border-radius: 25px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  margin-left: 1rem;
+}
+
+.tasklist-delete-btn:hover {
+  background-color: #a71d2a;
+}
+
+.tasklist-error {
+  color: #dc3545;
+  text-align: center;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+/* Responsive */
+@media (max-width: 576px) {
+  .tasklist-form {
+    flex-direction: column;
+  }
+  .tasklist-form button {
+    width: 100%;
+  }
+  .tasklist-delete-btn {
+    margin-left: 0.5rem;
+    padding: 0.4rem 0.6rem;
+  }
+}
