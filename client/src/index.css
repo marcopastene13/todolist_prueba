@@ -1,0 +1,230 @@
+body {
+  background-color: grey !important;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+}
+
+.card {
+  border: none;
+  border-radius: 1rem;
+  background: #ffffff;
+}
+
+input::placeholder {
+  color: #aaa;
+  font-weight: 300;
+}
+
+.btn-primary {
+  background-color: green;
+  border: none;
+  border-radius: 30px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: green;
+}
+
+.alert {
+  border-radius: 10px;
+  font-size: 0.9rem;
+}
+
+.navbar {
+  background-color: green;
+  color: white;
+  padding: 0.5rem 1rem;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  box-shadow: 0 2px 5px rgb(0 0 0 / 0.1);
+  font-family: 'Poppins', sans-serif;
+}
+
+.navbar-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.navbar-logo {
+  color: white;
+  font-weight: 700;
+  font-size: 1.5rem;
+  text-decoration: none;
+}
+
+
+.navbar-menu {
+  display: flex;
+  align-items: center;
+  flex-grow: 1;
+  justify-content: space-between ;
+  gap: 1rem;
+}
+
+
+/* Botón logout */
+.btn-logout {
+  background: red;
+  border: none;
+  padding: 0.5rem 1.25rem;
+  border-radius: 25px;
+  color: white;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.btn-logout:hover {
+  background: #d9363e;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: flex;
+  }
+
+  .navbar-menu {
+    flex-direction: column;
+    background: green;
+    position: absolute;
+    top: 56px;
+    right: 1rem;
+    padding: 1rem;
+    border-radius: 8px;
+    width: 180px;
+    box-shadow: 0 4px 10px rgb(0 0 0 / 0.15);
+    display: none;
+  }
+  .btn-logout {
+    width: 100%;
+    margin-top: 1rem;
+  }
+}
+
+/* TaskList.css */
+
+.tasklist-container {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 1rem;
+  background: #f8f9fa;
+  border-radius: 8px;
+;
+
+}
+
+.tasklist-container h2 {
+  margin-bottom: 1.5rem;
+  color: #333;
+  font-weight: 700;
+  text-align: center;
+}
+
+.tasklist-form {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.tasklist-form input {
+  flex-grow: 1;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  border-radius: 25px;
+  border: 1px solid #ced4da;
+}
+
+.tasklist-form input:focus {
+  outline: none;
+  border-color: green;
+  box-shadow: 0 0 5px green;
+}
+
+.tasklist-form button {
+  background-color: green;
+  border: none;
+  padding: 0 1.5rem;
+  border-radius: 25px;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.tasklist-form button:hover {
+  background-color: darkgreen;
+}
+
+.tasklist-items {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.tasklist-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: white;
+  margin-bottom: 0.75rem;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  cursor: default;
+}
+
+.tasklist-item.completed span {
+  text-decoration: line-through;
+  color: #6c757d;
+}
+
+.tasklist-item:hover {
+  background-color: #e9ecef;
+}
+
+.tasklist-item span {
+  flex-grow: 1;
+  cursor: pointer;
+  user-select: none;
+}
+
+.tasklist-delete-btn {
+  background-color: #dc3545;
+  border: none;
+  color: white;
+  padding: 0.4rem 0.8rem;
+  border-radius: 25px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  margin-left: 1rem;
+}
+
+.tasklist-delete-btn:hover {
+  background-color: #a71d2a;
+}
+
+.tasklist-error {
+  color: #dc3545;
+  text-align: center;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+/* Responsive */
+@media (max-width: 576px) {
+  .tasklist-form {
+    flex-direction: column;
+  }
+  .tasklist-form button {
+    width: 100%;
+  }
+  .tasklist-delete-btn {
+    margin-left: 0.5rem;
+    padding: 0.4rem 0.6rem;
+  }
+}
